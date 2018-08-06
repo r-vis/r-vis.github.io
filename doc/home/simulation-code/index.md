@@ -6,11 +6,11 @@ conform to one of two layout types.
 * [Executive Function](#executive-function)
   
   In your code, a unary function is defined that runs the simulation and returns 
-  the results in single object (list or matrix or data frame).
+  the results in a single object (list or matrix or data frame).
 
 * [Template](#template)
 
-  Your code is a listing containing commands executed in the normal way, top to
+  Your code is a listing containing commands executed sequentially: top to
   bottom. Parameter assignments and acquisition of outputs occur in the global
   environment.
 
@@ -64,7 +64,7 @@ exec <- function(params) {
 
 The output returned by the executive function is a single list, matrix, or
 data frame. If a list, then each element must be a numerical vector, and
-all elements must be the same length. In all cases, items must be named;
+all elements must be the same length. In all cases, items must be named:
 list elements have tags; matrices and data frames have column names.
 
 The first element (if a list), or the first column (if a matrix or data frame),
@@ -131,6 +131,6 @@ Ensure the following:
   ```
 
 * Code that R-Vis is expected to recognise or manipulate, e.g. parameter 
-  assignments, should reside on a line of their own. Don't do this:
+  assignments, should reside on a line of its own. Don't do this:
 
   ```Qx <- 123; Qy <- 456```
