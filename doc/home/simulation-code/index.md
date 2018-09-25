@@ -1,7 +1,7 @@
 # R-Vis Simulation Code
 
 R-Vis supports use of simulations coded in a single .R file. Code must
-conform to one of two layout types.
+conform to one of two layout types:
 
 * [Executive Function](#executive-function)
   
@@ -16,19 +16,19 @@ conform to one of two layout types.
 
 ## Executive Function
 
-This is the preferred layout for use with R-Vis as it the more efficient of the two. At the start of each session, your code is required to be sourced just once.
+This is the preferred layout for use with R-Vis as it the more efficient of the two. At the start of each session, your code is sourced just once.
 After that, when R-Vis needs to re-run the simulation, it will find and invoke the
 executive function.
 
 When importing your code into R-Vis, in addition to specifying which function is
-the executive, you also specify which object (list) present in the global
+the executive, you also specify which object (list or numerical vector) present in the global
 environment should be the argument to the executive function. The argument is a
-list of inputs, typically parameters assignments. Those elements of the list
+collection of inputs, typically parameters assignments. Those elements of the collection
 containing scalars (numerical vectors of length one) are presented in the RVis
 user interface, and are the targets of R-Vis modules such as Morris and
 MCMC.
 
-### Executive Function - Input List
+### Executive Function - Input Collection
 
 In your code, you might define the inputs like this:
 
@@ -88,7 +88,7 @@ adapted from the deSolve manual and reformatted to use an executive function.
 ## Template
 
 If your code is a list of commands, R-Vis will source your script file each
-time it needs to execute the simulation. The are commands to be executed from top to bottom, typically with parameter assignments occurring near the top of the script, with simulation logic next, and concluding
+time it needs to execute the simulation. The commands are executed from top to bottom, typically with parameter assignments occurring near the top of the script, with simulation logic next, and concluding
 with outputs computed and assigned to one or more symbol names. When R-Vis needs to vary one or more of the parameter values, its will substitute those values into the source code and rewrite the file before sourcing your script file.
 
 R-Vis will detect only those parameter assignments made in the global environment.
@@ -122,7 +122,7 @@ Ensure the following:
   Qx <- 123 # mg/l
   ```
 
-* Code that R-Vis is expected to recognise or manipulate, e.g. parameter
+* Code that R-Vis is expected to recognise and manipulate, e.g. parameter
   assignments, resides on a line of its own. Don't do this:
 
   ```Qx <- 123; Qy <- 456```
